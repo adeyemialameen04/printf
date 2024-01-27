@@ -9,16 +9,6 @@
  */
 int main(void)
 {
-int len3;
-/*
-* int len1, len2;
-* len1 = printf("%K\n");
-* len2 = _printf("%K\n");
-* printf("%d\n", len1);
-* printf("%d\n", len2);
-*/
-
-len3 = _printf("%");
-_printf("%d", len3);
+printf("%s", 100);
 return (0);
 }

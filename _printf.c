@@ -27,16 +27,14 @@ char ch;
 char *str;
 int dec = 0;
 
+if (format == NULL)
+return (-1);
 
 va_start(args, format);
 
 while (format && format[i])
 {
-if (format[i] == '%' && format[i + 1] == '\0')
-{
-return (-1);
-}
-else if (format[i] == '%' && format[i + 1] == 'c')
+if (format[i] == '%' && format[i + 1] == 'c')
 {
 ch = va_arg(args, int);
 printChar(ch);
@@ -92,6 +90,13 @@ _putchar(ch);
 void printStr(char *str)
 {
 int i;
+
+if (str == NULL)
+{
+printStr("(nil)");
+return;
+}
+
 for (i = 0; str[i] != '\0'; i++)
 {
 _putchar(str[i]);
