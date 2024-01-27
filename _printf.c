@@ -6,7 +6,7 @@
 
 void printChar(char ch);
 void printStr(char *str);
-void printInt(int num);
+void printInt(int num, int *count);
 
 
 /**
@@ -107,14 +107,18 @@ _putchar(str[i]);
 }
 }
 
+
+
 /**
 * printInt - Print an int.
 * @num: int to be printed
-* @count: count
- */
+* @count: pointer to the count variable
+*/
 void printInt(int num, int *count)
 {
 int digits = 0;
+int divisor = 1;
+int i;
 
 if (num < 0)
 {
@@ -137,13 +141,15 @@ temp /= 10;
 digits++;
 }
 
-while (digits > 0)
+for (i = 1; i < digits; i++)
+divisor *= 10;
+
+while (divisor > 0)
 {
-int divisor = pow(10, digits - 1);
 int digit = num / divisor;
 _putchar(digit + '0');
 num %= divisor;
-digits--;
+divisor /= 10;
 (*count)++;
 }
 }
