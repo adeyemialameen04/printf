@@ -9,6 +9,6 @@
  */
 int main(void)
 {
-_printf("%%");
-	return(0);
+_printf("%%\n");
+return(0);
 }
