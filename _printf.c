@@ -56,7 +56,7 @@ i++;
 
 va_end(args);
 
-return (_printf);
+return (1);
 }
 
 /**
