@@ -56,7 +56,7 @@ else if ((format[i] == '%' && format[i + 1] == 'd') ||
 (format[i] == '%' && format[i + 1] == 'i'))
 {
 dec = va_arg(args, int);
-printInt(dec);
+printInt(dec, &count);
 i += 2;
 }
 else if (format[i] == '%' && format[i + 1] == '%')
@@ -110,19 +110,41 @@ _putchar(str[i]);
 /**
 * printInt - Print an int.
 * @num: int to be printed
+* @count: count
  */
-void printInt(int num)
+void printInt(int num, int *count)
 {
+int digits = 0;
+
 if (num < 0)
 {
 _putchar('-');
 num = -num;
+(*count)++;
 }
 
 if (num == 0)
+{
 _putchar('0');
+(*count)++;
+}
 else
-if (num / 10)
-printInt(num / 10);
-_putchar((num % 10) + '0');
+{
+int temp = num;
+while (temp != 0)
+{
+temp /= 10;
+digits++;
+}
+
+while (digits > 0)
+{
+int divisor = pow(10, digits - 1);
+int digit = num / divisor;
+_putchar(digit + '0');
+num %= divisor;
+digits--;
+(*count)++;
+}
+}
 }
