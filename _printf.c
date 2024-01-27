@@ -32,7 +32,11 @@ va_start(args, format);
 
 while (format && format[i])
 {
-if (format[i] == '%' && format[i + 1] == 'c')
+if (format[i] == '%' && format[i + 1] == '\0')
+{
+return (-1);
+}
+else if (format[i] == '%' && format[i + 1] == 'c')
 {
 ch = va_arg(args, int);
 printChar(ch);

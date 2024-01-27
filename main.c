@@ -18,7 +18,7 @@ int len3;
 * printf("%d\n", len2);
 */
 
-len3 = _printf("%!\n");
+len3 = _printf("%");
 _printf("%d", len3);
 return (0);
 }
