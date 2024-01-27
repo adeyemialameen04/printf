@@ -47,6 +47,11 @@ dec = va_arg(args, int);
 printInt(dec);
 i += 2;
 }
+else if (format[i] == '%' && format[i + 1] == '%')
+{
+printChar(va_arg(args, char));
+i += 2;
+}
 else
 {
 printChar(format[i]);
