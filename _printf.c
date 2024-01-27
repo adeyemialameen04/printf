@@ -23,6 +23,7 @@ va_list args;
 char ch;
 char *str;
 int dec = 0;
+char percent;
 
 va_start(args, format);
 
@@ -49,7 +50,8 @@ i += 2;
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
-printChar(va_arg(args, int));
+percent = va_arg(args, int);
+printChar(percent);
 i += 2;
 }
 else
