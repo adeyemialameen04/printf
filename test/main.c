@@ -10,15 +10,10 @@
 int main(void)
 {
 int len1, len2;
-len1 = _printf("%%%%");
-printf("\n");
-len2 = printf("%%%%");
-printf("\n");
 
-
-printf("I am a percentage %");
-
-
-printf("Length 1 is: %d\nLength 2 is: %d\n", len1, len2);
+len1 = printf("%K\n");
+len2 = _printf("%K\n");
+printf("%d\n", len1);
+printf("%d\n", len2);
 return(0);
 } 
