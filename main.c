@@ -9,6 +9,7 @@
  */
 int main(void)
 {
-_printf("%%\n");
+_printf("%%");
+printf("\n%%");
 return(0);
 }
