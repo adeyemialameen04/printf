@@ -9,7 +9,16 @@
  */
 int main(void)
 {
-_printf("%%");
-printf("\n%%");
+int len1, len2;
+len1 = _printf("%%%%");
+printf("\n");
+len2 = printf("%%%%");
+printf("\n");
+
+
+printf("I am a percentage %");
+
+
+printf("Length 1 is: %d\nLength 2 is: %d\n", len1, len2);
 return(0);
-}
+} 

@@ -1,4 +1,7 @@
+#include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
+#include <math.h>
 #include "main.h"
 
 void printChar(char ch);
@@ -18,7 +21,7 @@ void printInt(int num);
  */
 int _printf(const char *format, ...)
 {
-int i = 0;
+int i = 0, count = 0;
 va_list args;
 char ch;
 char *str;
@@ -33,12 +36,14 @@ if (format[i] == '%' && format[i + 1] == 'c')
 {
 ch = va_arg(args, int);
 printChar(ch);
+count++;
 i += 2;
 }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 str = va_arg(args, char*);
 printStr(str);
+count += strlen(str);
 i += 2;
 }
 else if ((format[i] == '%' && format[i + 1] == 'd') ||
@@ -52,17 +57,19 @@ else if (format[i] == '%' && format[i + 1] == '%')
 {
 printChar(37);
 i += 2;
+count++;
 }
 else
 {
 printChar(format[i]);
 i++;
+count++;
 }
 }
 
 va_end(args);
 
-return (i);
+return (count);
 }
 
 /**
