@@ -56,7 +56,7 @@ i++;
 
 va_end(args);
 
-return (1);
+return (0);
 }
 
 /**
