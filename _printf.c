@@ -49,7 +49,7 @@ i += 2;
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
-printChar(va_arg(args, char));
+printChar(va_arg(args, int));
 i += 2;
 }
 else
