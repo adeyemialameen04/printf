@@ -9,6 +9,9 @@
  */
 int main(void)
 {
-printf("%s", 100);
-return (0);
+	int len1;
+
+	len1 = _printf("%K\n");
+	_printf("%d\n", len1);
+	return (0);
 }
