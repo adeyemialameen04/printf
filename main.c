@@ -10,21 +10,11 @@
  */
 int main(void)
 {
-	/*
-	*long long int res = INT_MAX * 2;
-	_*printf("%d + %d = %d\n", INT_MAX, INT_MAX, res);
-	*/
-	/*int len1 = _printf("%d", NULL);*/
-	int len1;
-	long int res = INT_MAX * 2;
+	int len1 = printf(NULL);
+	int len2 = _printf(NULL);
 
-	len1 = _printf("%d + %d = %d\n", INT_MAX, INT_MAX, res);
-	_printf("\n%d\n", len1);
-
-	/*
-	 *len1 = _printf("%s", NULL);
-	 *printf("%d", len1);
-	 *return (0);
-	 */
+	printf("\n%d\n", len1);
+	printf("%d\n", len2);
+	/*2147483647*/
 	return (0);
 }
