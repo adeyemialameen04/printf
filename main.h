@@ -3,6 +3,6 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int convertToBinary(int dec);
+int convertToBinary(unsigned int dec);
 
 #endif /* #ifndef _MAIN_H_ */

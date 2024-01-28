@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == 'b')
 		{
-			int dec_bi = va_arg(args, int);
+			unsigned int dec_bi = va_arg(args, int);
 			int binary = convertToBinary(dec_bi);
 
 			printInt(binary, &count);

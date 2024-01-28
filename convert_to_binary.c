@@ -5,7 +5,7 @@
  * @dec: Int to be converted
  * Return: Return the converted binary.
  */
-int convertToBinary(int dec)
+int convertToBinary(unsigned int dec)
 {
 	int binary_num = 0, i = 1, remainder;
 
