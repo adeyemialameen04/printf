@@ -1,6 +1,5 @@
 #include <limits.h>
 #include <stdarg.h>
-#include <stddef.h>
 #include <math.h>
 #include "main.h"
 
@@ -70,7 +69,6 @@ int _printf(const char *format, ...)
 
 			printInt(binary, &count);
 			i += 2;
-			count++;
 		}
 		else
 		{

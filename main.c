@@ -10,6 +10,8 @@
  */
 int main(void)
 {
-	_printf("%b\n", 98);
+	int len = _printf("%b\n", NULL);
+
+	_printf("%d", len);
 	return (0);
 }
