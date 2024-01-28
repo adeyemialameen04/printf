@@ -6,7 +6,7 @@
 
 void printChar(char ch);
 void printStr(char *str, int *count);
-void printInt(unsigned int num, int *count);
+void printInt(int num, int *count);
 
 /**
  * _printf - Prints values based on a given format string and variable
@@ -120,11 +120,18 @@ void printStr(char *str, int *count)
  * @num: int to be printed
  * @count: pointer to the count variable
  */
-void printInt(unsigned int num, int *count)
+void printInt(int num, int *count)
 {
-	unsigned int digits = 0;
-	unsigned int divisor = 1;
-	unsigned int i;
+	int digits = 0;
+	int divisor = 1;
+	int i;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		num = -num;
+		(*count)++;
+	}
 
 	if (num == 0)
 	{
@@ -133,7 +140,7 @@ void printInt(unsigned int num, int *count)
 	}
 	else
 	{
-		unsigned int temp = num;
+		int temp = num;
 
 		while (temp != 0)
 		{
@@ -146,7 +153,7 @@ void printInt(unsigned int num, int *count)
 
 		while (divisor > 0)
 		{
-			unsigned int digit = num / divisor;
+			int digit = num / divisor;
 
 			_putchar(digit + '0');
 			num %= divisor;
