@@ -6,7 +6,7 @@
 
 void printChar(char ch);
 void printStr(char *str, int *count);
-void printInt(int num, int *count);
+void printInt(unsigned int num, int *count);
 
 /**
  * _printf - Prints values based on a given format string and variable
