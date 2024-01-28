@@ -5,7 +5,7 @@
 #include "main.h"
 
 void printChar(char ch);
-void printStr(char *str, int *count);
+void printStr(char *str);
 void printInt(int num, int *count);
 
 
@@ -48,7 +48,7 @@ i += 2;
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 str = va_arg(args, char*);
-printStr(str, &count);
+printStr(str);
 count += strlen(str);
 i += 2;
 }
@@ -91,20 +91,19 @@ _putchar(ch);
 * printStr - Print a string.
 * @str: String to be printed
  */
-void printStr(char *str, int *count)
+void printStr(char *str)
 {
 int i;
 
 if (str == NULL)
 {
-printStr("(null)", count);
+printStr("(null)");
 return;
 }
 
 for (i = 0; str[i] != '\0'; i++)
 {
 _putchar(str[i]);
-(*count)++;
 }
 }
 
