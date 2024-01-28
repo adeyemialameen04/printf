@@ -10,11 +10,6 @@
  */
 int main(void)
 {
-	int len1 = printf(NULL);
-	int len2 = _printf(NULL);
-
-	printf("\n%d\n", len1);
-	printf("%d\n", len2);
-	/*2147483647*/
+	_printf("%b\n", 98);
 	return (0);
 }
