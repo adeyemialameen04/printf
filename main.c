@@ -9,7 +9,7 @@
 */
 int main(void)
 {
-int og, fake;
+int og, fake, nil;
 /* 1. Positive Integer */
 _printf("Positive Integer: %d\n", 123);
 
@@ -31,8 +31,7 @@ _printf("Single-Digit Positive Integer: %d\n", 7);
 /* 7. Single-Digit Negative Integer */
 _printf("Single-Digit Negative Integer: %d\n", -8);
 
-/* 8. Integer with Leading Zeros */
-printf("Integer with Leading Zeros: %d\n", 000123); /* FAIL */
+
 
 /* 9. Integer Ending with Zeros */
 _printf("Integer Ending with Zeros: %d\n", 12000);
@@ -53,10 +52,10 @@ _printf("Integer Inside a String: Education is %d, Experience is what you get.\n
 _printf("Mix of Text and Integer: Education is when you read the fine print. Experience is what you get if you don't %d.\n", 789);
 
 /* 15. NULL Integer */
-og = printf("%d", NULL);
-printf("\n");
-fake = _printf("%d", NULL);
-printf("\n");
+
+/* 8. Integer with Leading Zeros */
+og = printf("%d\n", 000123); /* FAIL */
+fake = _printf("%d\n", 000123); /* FAIL */
 
 /* 16. Integer with Special Characters */
 _printf("Integer with Special Characters: Education is %d$, Experience is %i#.\n", 456, -789);
@@ -68,5 +67,8 @@ _printf("Integer with Special Characters: Education is %d$, Experience is %i#.\n
 
 printf("OGGG ISSS %d\n", og);
 _printf("FAKEE ISSS %d\n", fake);
+
+nil = _printf("%s", NULL);
+_printf("%d", nil);
 return (0);
 }
