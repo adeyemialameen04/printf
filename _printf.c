@@ -56,7 +56,7 @@ int _printf(const char *format, ...)
 			dec = va_arg(args, int);
 			if (dec >= INT_MAX)
 			{
-				return (-1);
+				return;
 			}
 			else
 				printInt(dec, &count);
