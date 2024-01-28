@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <limits.h>
 #include <stdarg.h>
 #include <string.h>
 #include <math.h>
@@ -7,7 +7,6 @@
 void printChar(char ch);
 void printStr(char *str);
 void printInt(int num, int *count);
-
 
 /**
  * _printf - Prints values based on a given format string and variable
@@ -21,136 +20,141 @@ void printInt(int num, int *count);
  */
 int _printf(const char *format, ...)
 {
-int i = 0, count = 0;
-va_list args;
-char ch;
-char *str;
-int dec = 0;
+	int i = 0, count = 0;
+	va_list args;
+	char ch;
+	char *str;
+	int dec = 0;
 
-if (format == NULL)
-return (-1);
+	if (format == NULL)
+		return (-1);
 
-va_start(args, format);
+	va_start(args, format);
 
-while (format && format[i])
-{
-if (format[i] == '%' && format[i + 1] == '\0')
-{
-return (-1);
-}
-else if (format[i] == '%' && format[i + 1] == 'c')
-{
-ch = va_arg(args, int);
-printChar(ch);
-count++;
-i += 2;
-}
-else if (format[i] == '%' && format[i + 1] == 's')
-{
-str = va_arg(args, char*);
-printStr(str);
-count += strlen(str);
-i += 2;
-}
-else if ((format[i] == '%' && format[i + 1] == 'd') ||
-(format[i] == '%' && format[i + 1] == 'i'))
-{
-dec = va_arg(args, int);
-printInt(dec, &count);
-i += 2;
-}
-else if (format[i] == '%' && format[i + 1] == '%')
-{
-printChar(37);
-i += 2;
-count++;
-}
-else
-{
-printChar(format[i]);
-i++;
-count++;
-}
-}
+	while (format && format[i])
+	{
+		if (format[i] == '%' && format[i + 1] == '\0')
+		{
+			return (-1);
+		}
+		else if (format[i] == '%' && format[i + 1] == 'c')
+		{
+			ch = va_arg(args, int);
+			printChar(ch);
+			count++;
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 's')
+		{
+			str = va_arg(args, char *);
+			printStr(str);
+			count += strlen(str);
+			i += 2;
+		}
+		else if ((format[i] == '%' && format[i + 1] == 'd') ||
+				 (format[i] == '%' && format[i + 1] == 'i'))
+		{
+			dec = va_arg(args, int);
+			printInt(dec, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == '%')
+		{
+			printChar(37);
+			i += 2;
+			count++;
+		}
+		else
+		{
+			printChar(format[i]);
+			i++;
+			count++;
+		}
+	}
 
-va_end(args);
+	va_end(args);
 
-return (count);
+	return (count);
 }
 
 /**
-* printChar - Print a character.
-* @ch: Char to be printed
+ * printChar - Print a character.
+ * @ch: Char to be printed
  */
 void printChar(char ch)
 {
-_putchar(ch);
+	_putchar(ch);
 }
 
 /**
-* printStr - Print a string.
-* @str: String to be printed
+ * printStr - Print a string.
+ * @str: String to be printed
  */
 void printStr(char *str)
 {
-int i;
+	int i;
 
-if (str == NULL)
-{
-printStr("(null)");
-return;
+	if (str == NULL)
+	{
+		printStr("(null)");
+		return;
+	}
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
 }
-
-for (i = 0; str[i] != '\0'; i++)
-{
-_putchar(str[i]);
-}
-}
-
-
 
 /**
-* printInt - Print an int.
-* @num: int to be printed
-* @count: pointer to the count variable
-*/
+ * printInt - Print an int.
+ * @num: int to be printed
+ * @count: pointer to the count variable
+ */
 void printInt(int num, int *count)
 {
-int digits = 0;
-int divisor = 1;
-int i;
+	int digits = 0, divisor = 1, i, temp, digit;
 
-if (num < 0)
-{
-_putchar('-');
-num = -num;
-(*count)++;
-}
-
-if (num == 0)
-{
-_putchar('0');
-(*count)++;
-}
-else
-{
-int temp = num;
-while (temp != 0)
-{
-temp /= 10;
-digits++;
-}
-
-for (i = 1; i < digits; i++)
-divisor *= 10;
-
-while (divisor > 0)
-{
-int digit = num / divisor;
-_putchar(digit + '0');
-num %= divisor;
-divisor /= 10;
-(*count)++;
-}
-}
+	if (num == INT_MIN)
+	{
+		_putchar('-');
+		num = -(num + 1);
+		(*count)++;
+	}
+	else if (num < 0)
+	{
+		_putchar('-');
+		num = -num;
+		(*count)++;
+	}
+	if (num == 0)
+	{
+		_putchar('0');
+		(*count)++;
+	}
+	else
+	{
+		temp = num;
+		while (temp != 0)
+		{
+			temp /= 10;
+			digits++;
+			if (temp < 0)
+			{
+				return;
+			}
+		}
+	}
+	for (i = 1; i < digits; i++)
+	{
+		divisor *= 10;
+	}
+	while (divisor > 0)
+	{
+		digit = num / divisor;
+		_putchar(digit + '0');
+		num %= divisor;
+		divisor /= 10;
+		(*count)++;
+	}
 }
