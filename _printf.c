@@ -54,13 +54,7 @@ int _printf(const char *format, ...)
 				 (format[i] == '%' && format[i + 1] == 'i'))
 		{
 			dec = va_arg(args, int);
-			if (dec >= INT_MAX)
-			{
-				printInt(dec, &count);
-				return (-1);
-			}
-			else
-				printInt(dec, &count);
+			printInt(dec, &count);
 			i += 2;
 		}
 		else if (format[i] == '%' && format[i + 1] == '%')
