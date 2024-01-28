@@ -113,20 +113,17 @@ void printStr(char *str)
  */
 void printInt(int num, int *count)
 {
-	int digits = 0, divisor = 1, i, temp, digit;
+	int digits = 0;
+	int divisor = 1;
+	int i;
 
-	if (num == INT_MIN)
-	{
-		_putchar('-');
-		num = -(num + 1);
-		(*count)++;
-	}
-	else if (num < 0)
+	if (num < 0)
 	{
 		_putchar('-');
 		num = -num;
 		(*count)++;
 	}
+
 	if (num == 0)
 	{
 		_putchar('0');
@@ -134,27 +131,25 @@ void printInt(int num, int *count)
 	}
 	else
 	{
-		temp = num;
+		int temp = num;
+
 		while (temp != 0)
 		{
 			temp /= 10;
 			digits++;
-			if (temp < 0)
-			{
-				return;
-			}
 		}
-	}
-	for (i = 1; i < digits; i++)
-	{
-		divisor *= 10;
-	}
-	while (divisor > 0)
-	{
-		digit = num / divisor;
-		_putchar(digit + '0');
-		num %= divisor;
-		divisor /= 10;
-		(*count)++;
+
+		for (i = 1; i < digits; i++)
+			divisor *= 10;
+
+		while (divisor > 0)
+		{
+			int digit = num / divisor;
+
+			_putchar(digit + '0');
+			num %= divisor;
+			divisor /= 10;
+			(*count)++;
+		}
 	}
 }
