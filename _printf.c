@@ -120,18 +120,11 @@ void printStr(char *str, int *count)
  * @num: int to be printed
  * @count: pointer to the count variable
  */
-void printInt(int num, int *count)
+void printInt(unsigned int num, int *count)
 {
-	int digits = 0;
-	int divisor = 1;
-	int i;
-
-	if (num < 0)
-	{
-		_putchar('-');
-		num = -num;
-		(*count)++;
-	}
+	unsigned int digits = 0;
+	unsigned int divisor = 1;
+	unsigned int i;
 
 	if (num == 0)
 	{
@@ -140,7 +133,7 @@ void printInt(int num, int *count)
 	}
 	else
 	{
-		int temp = num;
+		unsigned int temp = num;
 
 		while (temp != 0)
 		{
@@ -153,7 +146,7 @@ void printInt(int num, int *count)
 
 		while (divisor > 0)
 		{
-			int digit = num / divisor;
+			unsigned int digit = num / divisor;
 
 			_putchar(digit + '0');
 			num %= divisor;
