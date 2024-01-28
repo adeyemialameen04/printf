@@ -1,11 +1,11 @@
 #include <limits.h>
 #include <stdarg.h>
-#include <string.h>
+#include <stddef.h>
 #include <math.h>
 #include "main.h"
 
 void printChar(char ch);
-void printStr(char *str);
+void printStr(char *str, int *count);
 void printInt(int num, int *count);
 
 /**
@@ -47,8 +47,7 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
 			str = va_arg(args, char *);
-			printStr(str);
-			count += strlen(str);
+			printStr(str, &count);
 			i += 2;
 		}
 		else if ((format[i] == '%' && format[i + 1] == 'd') ||
@@ -90,19 +89,27 @@ void printChar(char ch)
  * printStr - Print a string.
  * @str: String to be printed
  */
-void printStr(char *str)
+void printStr(char *str, int *count)
 {
 	int i;
 
 	if (str == NULL)
 	{
-		printStr("(null)");
-		return;
+		char *nullStr = "(null)";
+		for (i = 0; nullStr[i] != '\0'; i++)
+		{
+			_putchar(nullStr[i]);
+			(*count)++;
+		}
 	}
 
-	for (i = 0; str[i] != '\0'; i++)
+	else
 	{
-		_putchar(str[i]);
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i]);
+			(*count)++;
+		}
 	}
 }
 
