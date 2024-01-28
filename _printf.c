@@ -57,7 +57,7 @@ int _printf(const char *format, ...)
 			if (dec >= INT_MAX)
 			{
 				printInt(dec, &count);
-				return (dec);
+				return (-1);
 			}
 			else
 				printInt(dec, &count);
