@@ -18,6 +18,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	char ch;
 	char *str;
+	void *ptr;
 	int dec = 0;
 
 	if (format == NULL)
@@ -63,6 +64,14 @@ int _printf(const char *format, ...)
 			unsigned int dec_bi = va_arg(args, int);
 
 			printBinary(dec_bi, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'p')
+		{
+			ptr = va_arg(args, void *);
+
+			printAddress(ptr, &count);
+
 			i += 2;
 		}
 		else
