@@ -18,7 +18,7 @@ typedef struct BinaryResult
 int _printf(const char *format, ...);
 int _putchar(char c);
 void printInt(int num, int *count);
-char *convertToBinary(unsigned int dec);
-void printBinary(int dec, int *count);
+/* char *convertToBinary(unsigned int dec); */
+/* int printBinary(unsigned int num, int *count); */
 
 #endif /* #ifndef _MAIN_H_ */
