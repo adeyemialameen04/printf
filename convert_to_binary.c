@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 /**
- * convertToBinary - Converts an unsigned integer to binary
- * @dec: Unsigned int to be converted
+ * convertToBinary - Converts and integer to binary
+ * @dec: Int to be converted
  * Return: Return the converted binary.
  */
 BinaryResult convertToBinary(unsigned int dec)
@@ -21,9 +21,7 @@ BinaryResult convertToBinary(unsigned int dec)
 	}
 
 	for (i = 0; i < 32; i++)
-	{
 		binary_num[i] = '0';
-	}
 
 	binary_num[32] = '\0';
 

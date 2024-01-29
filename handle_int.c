@@ -2,9 +2,9 @@
 #include "main.h"
 
 /**
- * printDigit - Print a single digit.
- * @digit: digit to be printed
- * @count: pointer to the count variable
+ * printDigit - Print a single digit
+ * @digit: Digit to be printed
+ * @count: Pointer to count variable
  */
 void printDigit(int digit, int *count)
 {
@@ -13,9 +13,9 @@ void printDigit(int digit, int *count)
 }
 
 /**
- * printInt - Print an int.
- * @num: int to be printed
- * @count: pointer to the count variable
+ * printInt - Print an int
+ * @num: Int number to be printed
+ * @count: Pointer to count variable
  */
 void printInt(int num, int *count)
 {
@@ -41,27 +41,22 @@ void printInt(int num, int *count)
 	}
 	else
 	{
-		int digits = 0;
-		int divisor = 1;
-		int temp = num;
-		int i;
+		int digits = 0, divisor = 1, temp = num, i;
 
 		while (temp != 0)
 		{
-			temp /= 10;
+			temp = temp / 10;
 			digits++;
 		}
-
 		for (i = 1; i < digits; i++)
 			divisor *= 10;
-
 		while (divisor > 0)
 		{
 			int digit = num / divisor;
 
 			printDigit(digit, count);
-			num %= divisor;
-			divisor /= 10;
+			num = num % divisor;
+			divisor = divisor / 10;
 		}
 	}
 }
