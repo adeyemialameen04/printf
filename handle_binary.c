@@ -1,16 +1,33 @@
+
+#include <stdlib.h>
 #include "main.h"
 
+/**
+ * printBinary - Converts and integer to binary
+ * @dec: Int to be converted
+ * @count: To update the coubnt
+ */
 void printBinary(int dec, int *count)
 {
-	int binary_num = 0, i = 1, remainder;
+	char binary_str[32];
+	int index = 0, i;
 
-	while (dec != 0)
+	if (dec == 0)
 	{
-		remainder = dec % 2;
-		dec /= 2;
-		binary_num += remainder * i;
-		i *= 10;
+		_putchar('0');
+		(*count)++;
+		return;
 	}
 
-	printInt(binary_num, count);
+	while (dec > 0)
+	{
+		binary_str[index++] = (dec % 2) + '0';
+		dec = dec / 2;
+	}
+
+	for (i = index - 1; i >= 0; i--)
+	{
+		_putchar(binary_str[i]);
+		(*count)++;
+	}
 }

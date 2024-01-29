@@ -66,6 +66,7 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%' && format[i + 1] == 'b')
 		{
 			unsigned int dec_bi = va_arg(args, int);
+
 			printBinary(dec_bi, &count);
 			i += 2;
 			count++;
