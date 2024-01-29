@@ -10,7 +10,7 @@
  */
 int main(void)
 {
-	int len = _printf("%b\n", NULL);
+	int len = _printf("%b\n", 10244);
 
 	_printf("%d", len);
 	return (0);

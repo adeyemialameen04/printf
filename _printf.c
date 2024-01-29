@@ -1,5 +1,6 @@
 #include <limits.h>
 #include <stdarg.h>
+#include <stdlib.h>
 #include <math.h>
 #include "main.h"
 
@@ -65,10 +66,12 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%' && format[i + 1] == 'b')
 		{
 			unsigned int dec_bi = va_arg(args, int);
-			int binary = convertToBinary(dec_bi);
+			BinaryResult result = convertToBinary(dec_bi);
 
-			printInt(binary, &count);
+			printStr(result.binary, &count);
+			free(result.binary - result.start);
 			i += 2;
+			count++;
 		}
 		else
 		{
