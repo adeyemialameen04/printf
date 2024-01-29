@@ -10,9 +10,9 @@
  */
 int main(void)
 {
-	int len = _printf("%b\n", 10244);
-	/* 10100000000100 */
-	/* 10100000001100 */
-	_printf("%d", len);
+	int len = _printf("%d\n", INT_MIN);
+	int len2 = printf("%d\n", INT_MIN);
+	_printf("%d\n", len);
+	_printf("%d\n", len2);
 	return (0);
 }

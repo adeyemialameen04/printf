@@ -2,25 +2,32 @@
 #include "main.h"
 
 /**
+ * printDigit - Print a single digit.
+ * @digit: digit to be printed
+ * @count: pointer to the count variable
+ */
+void printDigit(int digit, int *count)
+{
+	_putchar(digit + '0');
+	(*count)++;
+}
+
+/**
  * printInt - Print an int.
  * @num: int to be printed
  * @count: pointer to the count variable
  */
 void printInt(int num, int *count)
 {
-	int digits = 0;
-	int divisor = 1;
-	int i;
 	if (num == INT_MIN)
 	{
 		_putchar('-');
 		(*count)++;
-
-		printInt(-(num + 1), count);
-		_putchar('8');
+		_putchar('2');
 		(*count)++;
-		return;
+		num = 147483648;
 	}
+
 	if (num < 0)
 	{
 		_putchar('-');
@@ -30,12 +37,14 @@ void printInt(int num, int *count)
 
 	if (num == 0)
 	{
-		_putchar('0');
-		(*count)++;
+		printDigit(0, count);
 	}
 	else
 	{
+		int digits = 0;
+		int divisor = 1;
 		int temp = num;
+		int i;
 
 		while (temp != 0)
 		{
@@ -50,10 +59,9 @@ void printInt(int num, int *count)
 		{
 			int digit = num / divisor;
 
-			_putchar(digit + '0');
+			printDigit(digit, count);
 			num %= divisor;
 			divisor /= 10;
-			(*count)++;
 		}
 	}
 }
