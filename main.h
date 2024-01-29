@@ -2,23 +2,7 @@
 #define _MAIN_H_
 #include <stddef.h>
 
-/**
- * struct BinaryResult - Struct to convert to a binary
- * @binary: Converted binary
- * @start: to keep track for the 1's
- *
- * Description: Longer description
- */
-typedef struct BinaryResult
-{
-	char *binary;
-	int start;
-} BinaryResult;
-
 int _printf(const char *format, ...);
 int _putchar(char c);
-void printInt(int num, int *count);
-/* char *convertToBinary(unsigned int dec); */
-/* int printBinary(unsigned int num, int *count); */
 
 #endif /* #ifndef _MAIN_H_ */

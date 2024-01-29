@@ -1,13 +1,6 @@
-#include <limits.h>
 #include <stdarg.h>
-#include <stdlib.h>
-#include <math.h>
+#include "print.h"
 #include "main.h"
-
-void printChar(char ch);
-void printStr(char *str, int *count);
-void printInt(int num, int *count);
-void printBinary(unsigned int num, int *count);
 
 /**
  * _printf - Prints values based on a given format string and variable
@@ -83,71 +76,4 @@ int _printf(const char *format, ...)
 	va_end(args);
 
 	return (count);
-}
-
-/**
- * printChar - Print a character.
- * @ch: Char to be printed
- */
-void printChar(char ch)
-{
-	_putchar(ch);
-}
-
-/**
- * printStr - Print a string.
- * @str: String to be printed
- * @count: Counter variable.
- */
-void printStr(char *str, int *count)
-{
-	int i;
-
-	if (str == NULL)
-	{
-		char *nullStr = "(null)";
-
-		for (i = 0; nullStr[i] != '\0'; i++)
-		{
-			_putchar(nullStr[i]);
-			(*count)++;
-		}
-	}
-
-	else
-	{
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			_putchar(str[i]);
-			(*count)++;
-		}
-	}
-}
-
-/**
- * printBinary - Converts and prints and  integer to binary
- * @num: Int to be converted
- * @count: Counter variable.
- */
-void printBinary(unsigned int num, int *count)
-{
-	char buffer[33];
-	int i = 32;
-
-	if (num == 0)
-	{
-		printChar('0');
-		(*count)++;
-		return;
-	}
-
-	buffer[i--] = '\0';
-
-	while (num > 0)
-	{
-		buffer[i--] = (num & 1) ? '1' : '0';
-		num >>= 1;
-	}
-
-	printStr(buffer + i + 1, count);
 }

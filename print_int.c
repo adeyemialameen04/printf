@@ -1,5 +1,6 @@
 #include <limits.h>
 #include "main.h"
+#include "print.h"
 
 /**
  * printDigit - Print a single digit
