@@ -10,7 +10,7 @@ BinaryResult convertToBinary(unsigned int dec)
 {
 	char *binary_num = malloc(33);
 	int i;
-	int start = 0;
+	int start = 32;
 	BinaryResult result;
 
 	if (binary_num == NULL)
@@ -29,7 +29,10 @@ BinaryResult convertToBinary(unsigned int dec)
 	{
 		binary_num[i] = (dec % 2) + '0';
 		dec /= 2;
-		start = i;
+		if (binary_num[i] == '1')
+		{
+			start = i;
+		}
 	}
 
 	result.binary = binary_num + start;

@@ -11,7 +11,8 @@
 int main(void)
 {
 	int len = _printf("%b\n", 10244);
-
+	/* 10100000000100 */
+	/* 10100000001100 */
 	_printf("%d", len);
 	return (0);
 }
