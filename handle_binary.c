@@ -1,11 +1,9 @@
-
-#include <stdlib.h>
 #include "main.h"
 
 /**
- * printBinary - Converts and integer to binary
- * @dec: Int to be converted
- * @count: To update the coubnt
+ * printBinary - Converts an integer to binary with leading zeros.
+ * @dec: Integer to be converted.
+ * @count: Pointer to the count variable.
  */
 void printBinary(int dec, int *count)
 {
@@ -19,13 +17,22 @@ void printBinary(int dec, int *count)
 		return;
 	}
 
-	while (dec > 0)
+	for (i = 31; i >= 0; i--)
 	{
-		binary_str[index++] = (dec % 2) + '0';
-		dec = dec / 2;
+		binary_str[i] = (dec % 2) + '0';
+		dec /= 2;
 	}
 
-	for (i = index - 1; i >= 0; i--)
+	for (i = 0; i < 32; i++)
+	{
+		if (binary_str[i] == '1')
+		{
+			index = i;
+			break;
+		}
+	}
+
+	for (i = index; i < 32; i++)
 	{
 		_putchar(binary_str[i]);
 		(*count)++;

@@ -10,9 +10,6 @@
  */
 int main(void)
 {
-	int len = _printf("%b\n", INT_MAX);
-	/* int len2 = printf("%d\n", INT_MIN);*/
-
-	_printf("%d\n", len);
+	_printf("%b\n", 1024);
 	return (0);
 }

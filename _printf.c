@@ -69,7 +69,6 @@ int _printf(const char *format, ...)
 
 			printBinary(dec_bi, &count);
 			i += 2;
-			count++;
 		}
 		else
 		{

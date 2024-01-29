@@ -1,27 +1,24 @@
-#include "main.h"
 #include <stdlib.h>
 
 /**
  * convertToBinary - Converts and integer to binary
  * @dec: Int to be converted
- * Return: Return the converted binary.
+ * Return - Binary
  */
-BinaryResult convertToBinary(unsigned int dec)
+char *convertToBinary(unsigned int dec)
 {
 	char *binary_num = malloc(33);
 	int i;
-	int start = 32;
-	BinaryResult result;
 
 	if (binary_num == NULL)
 	{
-		result.binary = NULL;
-		result.start = 0;
-		return (result);
+		return (NULL);
 	}
 
 	for (i = 0; i < 32; i++)
+	{
 		binary_num[i] = '0';
+	}
 
 	binary_num[32] = '\0';
 
@@ -29,13 +26,7 @@ BinaryResult convertToBinary(unsigned int dec)
 	{
 		binary_num[i] = (dec % 2) + '0';
 		dec /= 2;
-		if (binary_num[i] == '1')
-		{
-			start = i;
-		}
 	}
 
-	result.binary = binary_num + start;
-	result.start = start;
-	return (result);
+	return (binary_num);
 }
