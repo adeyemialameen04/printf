@@ -11,9 +11,7 @@
 int main(void)
 {
 	int number = 0;
-	int *ptr = &number;
-	_printf("%p\n", &ptr);
 
-	printf("%p\n", &ptr);
+	_printf("%u", number);
 	return (0);
 }
