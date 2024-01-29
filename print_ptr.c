@@ -8,18 +8,22 @@
  */
 void printAddress(void *ptr, int *count)
 {
-	char hex_digits[] = "0123456789abcdef";
 	int i;
+	char hex_digits[] = "0123456789abcdef";
 	unsigned long int address = (unsigned long int)ptr;
-	char address_str[16];
+	char address_str[18];
 
-	for (i = 15; i >= 0; i--)
+	_putchar('0');
+	_putchar('x');
+	(*count) += 2;
+
+	for (i = 17; i >= 2; i--)
 	{
 		address_str[i] = hex_digits[address % 16];
 		address /= 16;
 	}
 
-	for (i = 0; i < 16; i++)
+	for (i = 0; i < 18; i++)
 	{
 		_putchar(address_str[i]);
 		(*count)++;

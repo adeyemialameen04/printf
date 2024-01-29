@@ -10,6 +10,10 @@
  */
 int main(void)
 {
-	_printf("%b\n", 1024);
+	int number = 0;
+	int *ptr = &number;
+	_printf("%p\n", &ptr);
+
+	printf("%p\n", &ptr);
 	return (0);
 }
