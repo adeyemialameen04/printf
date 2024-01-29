@@ -146,7 +146,7 @@ void printBinary(unsigned int num, int *count)
 	while (num > 0)
 	{
 		buffer[i--] = (num & 1) ? '1' : '0';
-		num >>= 1;
+		num >> 1;
 	}
 
 	printStr(buffer + i + 1, count);
