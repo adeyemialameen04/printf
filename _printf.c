@@ -63,7 +63,8 @@ int _printf(const char *format, ...)
 			i += 2;
 			count++;
 		}
-		else if (format[i] == '%' && format[i + 1] == 'b')
+		else if ((format[i] == '%' && format[i + 1] == 'b') ||
+				 (format[i] == '%' && format[i + 1] == 'B'))
 		{
 			unsigned int dec_bi = va_arg(args, int);
 
