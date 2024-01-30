@@ -11,10 +11,10 @@
  */
 int main(void)
 {
-	int number = INT_MAX;
+	int number = INT_MIN;
 
-	_printf("%o\n", number);
-	printf("%o\n", number);
+	_printf("%u\n", number);
+	printf("%u\n", number);
 
 	return (0);
 }
