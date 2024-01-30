@@ -11,7 +11,7 @@
  */
 int main(void)
 {
-	int number = INT_MIN;
+	int number = INT_MAX;
 	int *ptr_num = &number;
 
 	_printf("%p\n", &ptr_num);

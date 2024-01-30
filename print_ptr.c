@@ -13,6 +13,9 @@ void printPtr(void *ptr, int *count)
 	char buffer[20];
 	int i = 0;
 
+	if (ptr == NULL)
+		return;
+
 	if (num == 0)
 	{
 		printStr("0x0", count);
