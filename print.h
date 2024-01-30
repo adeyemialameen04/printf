@@ -9,6 +9,6 @@ void printBinary(unsigned int num, int *count);
 void printUnsigned(unsigned int num, int *count);
 void printOct(int dec, int *count);
 void printHex(int dec, int *count);
-void printAddress(void *ptr, int *count);
+void printPtr(void *ptr, int *count);
 
 #endif /* #ifndef _PRINT_H_ */

@@ -12,9 +12,10 @@
 int main(void)
 {
 	int number = INT_MIN;
+	int *ptr_num = &number;
 
-	_printf("%u\n", number);
-	printf("%u\n", number);
+	_printf("%p\n", &ptr_num);
+	printf("%p\n", &ptr_num);
 
 	return (0);
 }

@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 	unsigned int un_num;
 	int oct_dec;
 	int hex_dec;
+	void *ptr;
 
 	if (format == NULL)
 		return (-1);
@@ -85,6 +86,12 @@ int _printf(const char *format, ...)
 		{
 			hex_dec = va_arg(args, int);
 			printHex(hex_dec, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'p')
+		{
+			ptr = va_arg(args, void *);
+			printPtr(ptr, &count);
 			i += 2;
 		}
 		else
