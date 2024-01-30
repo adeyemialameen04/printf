@@ -9,6 +9,7 @@ void printBinary(unsigned int num, int *count);
 void printUnsigned(unsigned int num, int *count);
 void printOct(int dec, int *count);
 void printHex(int dec, int *count);
+void printHexCap(int dec, int *count);
 void printPtr(void *ptr, int *count);
 void printReverse(char *str, int *count);
 

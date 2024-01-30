@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 	unsigned int un_num;
 	int oct_dec;
 	int hex_dec;
+	int hex_dec_cap;
 	void *ptr;
 
 	if (format == NULL)
@@ -82,11 +83,16 @@ int _printf(const char *format, ...)
 			printOct(oct_dec, &count);
 			i += 2;
 		}
-		else if ((format[i] == '%' && format[i + 1] == 'x') ||
-				 (format[i] == '%' && format[i + 1] == 'X'))
+		else if (format[i] == '%' && format[i + 1] == 'x')
 		{
 			hex_dec = va_arg(args, int);
 			printHex(hex_dec, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'X')
+		{
+			hex_dec_cap = va_arg(args, int);
+			printHexCap(hex_dec_cap, &count);
 			i += 2;
 		}
 		else if (format[i] == '%' && format[i + 1] == 'p')
