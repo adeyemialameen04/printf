@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 	char *str;
 	int dec = 0;
 	unsigned int un_num;
+	int oct_dec;
 
 	if (format == NULL)
 		return (-1);
@@ -70,6 +71,12 @@ int _printf(const char *format, ...)
 		{
 			un_num = va_arg(args, unsigned int);
 			printUnsigned(un_num, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'o')
+		{
+			oct_dec = va_arg(args, int);
+			printOct(oct_dec, &count);
 			i += 2;
 		}
 		else

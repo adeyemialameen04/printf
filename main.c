@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "print.h"
 #include "main.h"
 
 /**
@@ -10,8 +11,10 @@
  */
 int main(void)
 {
-	int number = 0;
+	int number = 200;
 
-	_printf("%u", number);
+	_printf("%o\n", number);
+	printf("%o\n", number);
+
 	return (0);
 }
