@@ -11,7 +11,7 @@
  */
 int main(void)
 {
-	int number = INT_MAX;
+	int number = INT_MIN;
 
 	_printf("Octal\n");
 	_printf("%o\n", number);
