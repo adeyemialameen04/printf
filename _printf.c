@@ -18,6 +18,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	char ch;
 	char *str;
+	char *str_rev;
 	int dec = 0;
 	unsigned int un_num;
 	int oct_dec;
@@ -92,6 +93,12 @@ int _printf(const char *format, ...)
 		{
 			ptr = va_arg(args, void *);
 			printPtr(ptr, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'r')
+		{
+			str_rev = va_arg(args, char *);
+			printReverse(str_rev, &count);
 			i += 2;
 		}
 		else

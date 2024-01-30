@@ -11,11 +11,8 @@
  */
 int main(void)
 {
-	int number = INT_MAX;
-	int *ptr_num = &number;
+	char *str = "How far na";
 
-	_printf("%p\n", &ptr_num);
-	printf("%p\n", &ptr_num);
-
+	_printf("%r\n", str);
 	return (0);
 }
