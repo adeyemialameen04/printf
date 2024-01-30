@@ -11,10 +11,10 @@
  */
 int main(void)
 {
-	int number = 200;
+	int number = INT_MIN;
 
-	_printf("%o\n", number);
-	printf("%o\n", number);
+	_printf("%x\n", number);
+	printf("%x\n", number);
 
 	return (0);
 }

@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 	int dec = 0;
 	unsigned int un_num;
 	int oct_dec;
+	int hex_dec;
 
 	if (format == NULL)
 		return (-1);
@@ -77,6 +78,13 @@ int _printf(const char *format, ...)
 		{
 			oct_dec = va_arg(args, int);
 			printOct(oct_dec, &count);
+			i += 2;
+		}
+		else if ((format[i] == '%' && format[i + 1] == 'x') ||
+				 (format[i] == '%' && format[i + 1] == 'X'))
+		{
+			hex_dec = va_arg(args, int);
+			printHex(hex_dec, &count);
 			i += 2;
 		}
 		else
