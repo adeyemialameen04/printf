@@ -10,12 +10,13 @@ void printHex(int dec, int *count)
 {
 	char hexa_dec[100];
 	int i = 0, j;
+	unsigned int u_dec = (unsigned int)dec;
 
-	while (dec != 0)
+	while (u_dec != 0)
 	{
 		int temp = 0;
 
-		temp = dec % 16;
+		temp = u_dec % 16;
 
 		if (temp < 10)
 		{
@@ -28,7 +29,12 @@ void printHex(int dec, int *count)
 			i++;
 		}
 
-		dec = dec / 16;
+		u_dec = u_dec / 16;
+	}
+
+	if (i == 0)
+	{
+		hexa_dec[i++] = '0';
 	}
 
 	for (j = i - 1; j >= 0; j--)
