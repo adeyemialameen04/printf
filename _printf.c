@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 	char ch;
 	char *str;
 	char *str_rev;
+	char *cus_str;
 	int dec = 0;
 	unsigned int un_num;
 	int oct_dec;
@@ -105,6 +106,12 @@ int _printf(const char *format, ...)
 		{
 			str_rev = va_arg(args, char *);
 			printReverse(str_rev, &count);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'S')
+		{
+			cus_str = va_arg(args, char *);
+			printCustomStr(cus_str, &count);
 			i += 2;
 		}
 		else
