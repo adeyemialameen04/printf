@@ -11,8 +11,9 @@
  */
 int main(void)
 {
-	char *str = "How far na";
 
-	_printf("%r\n", str);
+	_printf("%p\n", NULL);
+	printf("%p\n", NULL);
+
 	return (0);
 }

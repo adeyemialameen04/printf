@@ -10,11 +10,15 @@ void printPtr(void *ptr, int *count)
 {
 	unsigned long num = (unsigned long)ptr;
 	char hex[17] = "0123456789abcdef";
+	char *nilStr = "(nil)";
 	char buffer[20];
 	int i = 0;
 
 	if (ptr == NULL)
+	{
+		printStr(nilStr, count);
 		return;
+	}
 
 	if (num == 0)
 	{
