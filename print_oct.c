@@ -8,17 +8,31 @@
  */
 void printOct(int dec, int *count)
 {
-	int remainder;
-	int oct_num = 0;
-	int i = 1;
+	char oct_dec[100];
+	int i = 0, j;
+	unsigned int u_dec = (unsigned int)dec;
 
-	while (dec != 0)
+	if (u_dec == 0)
 	{
-		remainder = dec % 8;
-		oct_num = oct_num + remainder * i;
-		i = i * 10;
-		dec = dec / 8;
+		oct_dec[i++] = '0';
+	}
+	else
+	{
+		while (u_dec != 0)
+		{
+			int temp = 0;
+
+			temp = u_dec % 8;
+
+			oct_dec[i++] = temp + '0';
+
+			u_dec = u_dec / 8;
+		}
 	}
 
-	printInt(oct_num, count);
+	for (j = i - 1; j >= 0; j--)
+	{
+		printChar(oct_dec[j]);
+		(*count)++;
+	}
 }
