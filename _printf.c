@@ -2,6 +2,8 @@
 #include "print.h"
 #include "main.h"
 
+void handle_select_specifier(char specifier, va_list args, int *count);
+
 /**
  * _printf - Prints values based on a given format string and variable
  * arguments.
@@ -14,104 +16,24 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
 	va_list args;
-	char ch;
-	char *str;
-	char *str_rev;
-	char *cus_str;
-	int dec = 0;
-	unsigned int un_num;
-	int oct_dec;
-	int hex_dec;
-	int hex_dec_cap;
-	void *ptr;
+	int i = 0, count = 0;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(args, format);
-
 	while (format && format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
 			return (-1);
 		}
-		else if (format[i] == '%' && format[i + 1] == 'c')
+		else if (format[i] == '%')
 		{
-			ch = va_arg(args, int);
-			printChar(ch);
-			count++;
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 's')
-		{
-			str = va_arg(args, char *);
-			printStr(str, &count);
-			i += 2;
-		}
-		else if ((format[i] == '%' && format[i + 1] == 'd') ||
-				 (format[i] == '%' && format[i + 1] == 'i'))
-		{
-			dec = va_arg(args, int);
-			printInt(dec, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == '%')
-		{
-			printChar(37);
-			i += 2;
-			count++;
-		}
-		else if ((format[i] == '%' && format[i + 1] == 'b') ||
-				 (format[i] == '%' && format[i + 1] == 'B'))
-		{
-			unsigned int dec_bi = va_arg(args, int);
+			char curr_format = format[i + 1];
 
-			printBinary(dec_bi, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'u')
-		{
-			un_num = va_arg(args, unsigned int);
-			printUnsigned(un_num, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'o')
-		{
-			oct_dec = va_arg(args, int);
-			printOct(oct_dec, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'x')
-		{
-			hex_dec = va_arg(args, int);
-			printHex(hex_dec, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'X')
-		{
-			hex_dec_cap = va_arg(args, int);
-			printHexCap(hex_dec_cap, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'p')
-		{
-			ptr = va_arg(args, void *);
-			printPtr(ptr, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'r')
-		{
-			str_rev = va_arg(args, char *);
-			printReverse(str_rev, &count);
-			i += 2;
-		}
-		else if (format[i] == '%' && format[i + 1] == 'S')
-		{
-			cus_str = va_arg(args, char *);
-			printCustomStr(cus_str, &count);
+			handle_select_specifier(curr_format, args, &count);
 			i += 2;
 		}
 		else
@@ -125,4 +47,58 @@ int _printf(const char *format, ...)
 	va_end(args);
 
 	return (count);
+}
+
+/**
+ * handle_select_specifier - This function is used to handle each
+ * format specifier
+ * @specifier: The current specifier.
+ * @args: Number of arguments passed to the printf function.
+ * @count: Pointer to the count variable.
+ */
+void handle_select_specifier(char specifier, va_list args, int *count)
+{
+	switch (specifier)
+	{
+	case 'c':
+		printChar(va_arg(args, int));
+		(*count)++;
+		break;
+	case 's':
+		printStr(va_arg(args, char *), count);
+		break;
+	case 'd':
+	case 'i':
+		printInt(va_arg(args, int), count);
+		break;
+	case '%':
+		printChar(37);
+		(*count)++;
+		break;
+	case 'b':
+	case 'B':
+		printBinary(va_arg(args, int), count);
+		break;
+	case 'u':
+		printUnsigned(va_arg(args, unsigned int), count);
+		break;
+	case 'o':
+		printOct(va_arg(args, int), count);
+		break;
+	case 'x':
+		printHex(va_arg(args, int), count);
+		break;
+	case 'X':
+		printHexCap(va_arg(args, int), count);
+		break;
+	case 'p':
+		printPtr(va_arg(args, void *), count);
+		break;
+	case 'r':
+		printReverse(va_arg(args, char *), count);
+		break;
+	case 'S':
+		printCustomStr(va_arg(args, char *), count);
+		break;
+	}
 }

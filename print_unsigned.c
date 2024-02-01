@@ -15,7 +15,8 @@ void printUnsigned(unsigned int num, int *count)
 	else
 	{
 		int digits = 0, i;
-		unsigned int divisor = 1, temp = num;
+		unsigned int divisor = 1;
+		unsigned int temp = num;
 
 		while (temp != 0)
 		{
@@ -28,7 +29,8 @@ void printUnsigned(unsigned int num, int *count)
 		{
 			unsigned int digit = num / divisor;
 
-			printDigit(digit, count);
+			_putchar(digit + '0');
+			(*count)++;
 			num = num % divisor;
 			divisor = divisor / 10;
 		}
