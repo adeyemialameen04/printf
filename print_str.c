@@ -20,7 +20,6 @@ void printStr(char *str, int *count)
 			(*count)++;
 		}
 	}
-
 	else
 	{
 		for (i = 0; str[i] != '\0'; i++)
