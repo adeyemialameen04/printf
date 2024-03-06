@@ -97,6 +97,9 @@ void handle_select_specifier(char specifier, va_list args, int *count)
 	case 'r':
 		printReverse(va_arg(args, char *), count);
 		break;
+	case 'R':
+		print_rot13(va_arg(args, char *), count);
+		break;
 	case 'S':
 		printCustomStr(va_arg(args, char *), count);
 		break;
