@@ -9,10 +9,12 @@
  */
 void print_rot13(const char *str, int *count)
 {
+	int i;
+
 	if (str == NULL)
 		return;
 
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		char c = str[i];
 
@@ -21,12 +23,12 @@ void print_rot13(const char *str, int *count)
 			char base = islower(c) ? 'a' : 'A';
 			char rotated = ((c - base + 13) % 26) + base;
 
-			putchar(rotated);
+			_putchar(rotated);
 			(*count)++;
 		}
 		else
 		{
-			putchar(c);
+			_putchar(c);
 			(*count)++;
 		}
 	}
