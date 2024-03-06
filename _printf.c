@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			printChar(format[i]);
+			printCharWithFlags(format[i], 0, &count);
 			i++;
 			count++;
 		}
@@ -49,6 +49,10 @@ int _printf(const char *format, ...)
 	return (count);
 }
 
+#define FLAG_PLUS 1
+#define FLAG_SPACE 2
+#define FLAG_HASH 4
+
 /**
  * handle_select_specifier - This function is used to handle each
  * format specifier
@@ -58,18 +62,34 @@ int _printf(const char *format, ...)
  */
 void handle_select_specifier(char specifier, va_list args, int *count)
 {
+
+	int flags = 0; /*Initialize flags variable*/
+
+	/*Check for flags*/
+	while (specifier == '+' || specifier == ' ' || specifier == '#')
+	{
+		/*Update flags based on the given flag characters*/
+		if (specifier == '+')
+			flags |= FLAG_PLUS;
+		else if (specifier == ' ')
+			flags |= FLAG_SPACE;
+		else if (specifier == '#')
+			flags |= FLAG_HASH;
+
+		specifier = va_arg(args, int); /*Get the next character after the flag*/
+	}
+
 	switch (specifier)
 	{
 	case 'c':
-		printChar(va_arg(args, int));
-		(*count)++;
+		printCharWithFlags(va_arg(args, int), flags, count);
 		break;
 	case 's':
-		printStr(va_arg(args, char *), count);
+		printStrWithFlags(va_arg(args, char *), flags, count);
 		break;
 	case 'd':
 	case 'i':
-		printInt(va_arg(args, int), count);
+		printIntWithFlags(va_arg(args, signed int), flags, count);
 		break;
 	case '%':
 		printChar(37);

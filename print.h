@@ -15,4 +15,8 @@ void printCustomStr(char *str, int *count);
 void printReverse(char *str, int *count);
 void print_rot13(const char *str, int *count);
 
+void printCharWithFlags(char ch, int flags, int *count);
+void printStrWithFlags(char *str, int flags, int *count);
+void printIntWithFlags(signed int num, int flags, int *count);
+
 #endif /* #ifndef _PRINT_H_ */
